@@ -9,6 +9,8 @@ body {
 
 .main-container {
   font-family: 'Roboto', 'Helvetica Neue', Helvetica, sans-serif, Arial !important;
+  min-width: 380px;
+  min-height: 430px;
 }
 
 a {
