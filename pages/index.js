@@ -2,6 +2,8 @@ import Head from 'next/head'
 import { useEffect, useRef, useState } from 'react'
 
 import Switch from '../components/Switch'
+import NumberField from '../components/NumberField'
+import Result from '../components/Result'
 
 const paypalCommission = 5.4
 
@@ -91,8 +93,6 @@ export default function Home() {
     currentValue && calculatePercent(currentValue)
   }
 
-  console.log(currentValue)
-
   return (
     <div className="flex flex-col items-center justify-center">
       <Head>
@@ -115,31 +115,22 @@ export default function Home() {
           />
         </div>
         <form onSubmit={null} ref={form} className="mt-5">
-          <label>
-            <span className="text-main">
-              {sendActive ? 'Cantidad que desea Recibir' : 'Cantidad a Enviar'}{' '}
-              :
-            </span>
-            <div className="mt-2 flex flex-row bg-field-bg border-field-border border-2 rounded-xl px-3 items-center">
-              <span className="mr-2 text-gray-500">$</span>
-              <input
-                type="number"
-                placeholder="0,0"
-                className="bg-field-bg text-gray-700 w-full py-3"
-                onChange={handleChangeValue}
-                value={currentValue}
-              />
-            </div>
-          </label>
+          <NumberField
+            value={currentValue}
+            handleChange={handleChangeValue}
+            label={`${
+              sendActive ? 'Cantidad que desea Recibir' : 'Cantidad a Enviar'
+            } :`}
+          />
         </form>
         {result && (
           <>
             <p className="text-center mt-2 text-sm">
               {sendActive ? 'Es necesario enviar' : 'Cantidad que se recibira'}:
             </p>
-            <h2 className="result-text font-extrabold text-6xl text-center mt-1">
-              {result}
-            </h2>
+            <div className="relative">
+              <Result value={result} />
+            </div>
             <p className="text-center mt-3">
               Comision de <b>{commission}usd</b>
             </p>
