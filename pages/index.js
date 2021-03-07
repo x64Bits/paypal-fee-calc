@@ -20,7 +20,7 @@ export default function Home() {
 
   useEffect(() => {
     currentValue && calculatePercent(currentValue)
-  }, [currentValue])
+  }, [sendActive, currentValue])
 
   function getResult(value) {
     const crrValue = parseFloat(value)
@@ -88,9 +88,7 @@ export default function Home() {
   }
 
   function handleToggleSendActive(newValue) {
-    setResult(null)
     setSendActive(newValue)
-    currentValue && calculatePercent(currentValue)
   }
 
   return (
@@ -102,7 +100,7 @@ export default function Home() {
       <main className="mx-5 my-5 max-w-md">
         <header className="flex flex-row items-center">
           <img src="/iso.png" alt="App icon" className="h-12 w-12" />
-          <img src="/pp-logo.png" alt="PayPal logo" className="h-7 ml-2 mb-2" />
+          <img src="/pp-logo.png" alt="PayPal logo" className="h-7 ml-2" />
         </header>
         <h1 className="text-lg mr-16 mt-3">
           Calculadora de comisiones de <b>PayPal</b>
@@ -129,7 +127,7 @@ export default function Home() {
               {sendActive ? 'Es necesario enviar' : 'Cantidad que se recibira'}:
             </p>
             <div className="relative">
-              <Result value={result} />
+              <Result value={result} key={currentValue} />
             </div>
             <p className="text-center mt-3">
               Comision de <b>{commission}usd</b>

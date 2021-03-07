@@ -1,5 +1,9 @@
 {
   "name": "pp-calc",
+  "author": {
+    "name": "Ignacio Zsabo",
+    "email": "ignacioluisr2006@gmail.com"
+  },
   "version": "0.1.0",
   "private": true,
   "scripts": {
