@@ -109,7 +109,7 @@ export default function Home() {
           <Switch
             active={sendActive}
             setActive={handleToggleSendActive}
-            label="Activar recibir"
+            label="Activar Enviar"
           />
         </div>
         <form onSubmit={null} ref={form} className="mt-5">
@@ -124,7 +124,7 @@ export default function Home() {
         {result && (
           <>
             <p className="text-center mt-2 text-sm">
-              {sendActive ? 'Es necesario enviar' : 'Cantidad que se recibira'}:
+              {sendActive ? 'Cantidad que se recibira' : 'Es necesario enviar'}:
             </p>
             <div className="relative">
               <Result value={result} key={currentValue} />
