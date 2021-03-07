@@ -5,6 +5,9 @@ input {
 body {
   padding: 0;
   margin: 0;
+}
+
+.main-container {
   font-family: 'Roboto', 'Helvetica Neue', Helvetica, sans-serif, Arial !important;
 }
 

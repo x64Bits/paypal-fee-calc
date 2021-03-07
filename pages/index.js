@@ -97,7 +97,7 @@ export default function Home() {
         <title>Calculadora de Comisiones para PayPal</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="mx-5 my-5 max-w-md">
+      <main className="mx-5 my-5 max-w-md main-container">
         <header className="flex flex-row items-center">
           <img src="/iso.png" alt="App icon" className="h-12 w-12" />
           <img src="/pp-logo.png" alt="PayPal logo" className="h-7 ml-2" />
