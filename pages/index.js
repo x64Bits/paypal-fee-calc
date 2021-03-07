@@ -117,7 +117,7 @@ export default function Home() {
             value={currentValue}
             handleChange={handleChangeValue}
             label={`${
-              sendActive ? 'Cantidad que desea Recibir' : 'Cantidad a Enviar'
+              sendActive ? 'Cantidad a Enviar' : 'Cantidad que desea Recibir'
             } :`}
           />
         </form>
