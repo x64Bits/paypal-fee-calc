@@ -36,12 +36,9 @@ export default function Home() {
 
     const parseCommission = parseFloat(
       Math.round(crrResult * 100) / 100 - crrValue
-    )
-    const roundCommission = Math.round(parseCommission * 100) / 100
+    ).toFixed(2)
 
-    const crrCommission = Math.round(roundCommission * 100) / 100
-
-    return crrCommission
+    return parseCommission
   }
 
   function getReceiveCommission(value) {
