@@ -12,7 +12,7 @@ function MyApp({ Component, pageProps }) {
         <link rel="icon" href="/iso.png" />
         <meta name="description" content="PayPal Fee Calculator" />
         <meta name="robots" content="index" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
         <link
           rel="preload stylesheet"
           href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap"
