@@ -1,86 +1,22 @@
 import Head from 'next/head'
-import { useEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 
 import Switch from '../components/Switch'
 import NumberField from '../components/NumberField'
 import Result from '../components/Result'
+import { useCalculatePercent } from '../utils/calculate-percentage'
 
-const paypalCommission = 5.4
-
-const paypalFee = 0.3
-
-export default function Home() {
+function Home() {
   const [sendActive, setSendActive] = useState(false)
-  const [result, setResult] = useState()
-  const [commission, setCommission] = useState()
-
+  const [currentValue, setCurrentValue] = useState(0)
   const form = useRef(null)
 
-  const [currentValue, setCurrentValue] = useState()
-
-  useEffect(() => {
-    currentValue && calculatePercent(currentValue)
-  }, [sendActive, currentValue])
-
-  function getResult(value) {
-    const crrValue = parseFloat(value)
-    return parseFloat(
-      (100 * (paypalFee + crrValue)) / (0 - paypalCommission + 100)
-    ).toFixed(2)
-  }
-
-  function getCommission(value) {
-    const crrValue = parseFloat(value)
-
-    const crrResult = getResult(crrValue)
-
-    const parseCommission = parseFloat(
-      Math.round(crrResult * 100) / 100 - crrValue
-    ).toFixed(2)
-
-    return parseCommission
-  }
-
-  function getReceiveCommission(value) {
-    const crrValue = parseFloat(value)
-    return parseFloat((paypalCommission / 100) * crrValue + paypalFee).toFixed(
-      2
-    )
-  }
-
-  function toSend(value) {
-    const crrCommission = getCommission(value)
-    const crrResult = getResult(value)
-
-    return { totalResult: crrResult, totalCommission: crrCommission }
-  }
-
-  function toReceive(value) {
-    const crrCommission = getReceiveCommission(value)
-    const crrResult = value - crrCommission
-
-    return { totalResult: crrResult, totalCommission: crrCommission }
-  }
-
-  function calculatePercent(currentValue) {
-    const { totalResult, totalCommission } = sendActive
-      ? toReceive(currentValue)
-      : toSend(currentValue)
-
-    setCommission(totalCommission)
-    setResult(totalResult)
-  }
+  const [result, commission] = useCalculatePercent(currentValue, sendActive)
 
   function handleChangeValue(e) {
     e && e.preventDefault()
     const { value } = e.target
 
-    if (value.length === 0) {
-      setResult(null)
-      setCommission(null)
-    } else {
-      calculatePercent(value)
-    }
     setCurrentValue(value)
   }
 
@@ -118,7 +54,7 @@ export default function Home() {
             } :`}
           />
         </form>
-        {result && (
+        {result !== 0 && (
           <>
             <p className="text-center mt-2 text-sm">
               {sendActive ? 'Cantidad que se recibira' : 'Es necesario enviar'}:
@@ -135,3 +71,5 @@ export default function Home() {
     </div>
   )
 }
+
+export default Home
