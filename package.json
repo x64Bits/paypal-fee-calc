@@ -1,10 +1,10 @@
 {
-  "name": "pp-calc",
+  "name": "paypal-fee-calculator",
   "author": {
     "name": "Ignacio Zsabo",
     "email": "ignacioluisr2006@gmail.com"
   },
-  "version": "0.1.0",
+  "version": "0.1.3",
   "private": true,
   "scripts": {
     "dev": "next dev",
