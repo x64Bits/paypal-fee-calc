@@ -45,7 +45,7 @@ function Home() {
           />
         </div>
         <NumberField
-          value={currentValue}
+          value={currentValue === 0 ? '' : currentValue}
           handleChange={handleChangeValue}
           label={`${
             sendActive ? 'Cantidad a Enviar' : 'Cantidad que desea Recibir'
