@@ -55,7 +55,7 @@ function useCalculatePercent(value, sendActive) {
   const [commission, setCommission] = useState(0)
 
   useEffect(() => {
-    if (value.length === 0) {
+    if (value.length === 0 || value === '0') {
       setResult(0)
       setCommission(0)
       return

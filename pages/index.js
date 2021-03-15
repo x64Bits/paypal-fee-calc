@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { useRef, useState } from 'react'
+import { useState } from 'react'
 
 import Switch from '../components/Switch'
 import NumberField from '../components/NumberField'
@@ -9,7 +9,6 @@ import { useCalculatePercent } from '../utils/calculate-percentage'
 function Home() {
   const [sendActive, setSendActive] = useState(false)
   const [currentValue, setCurrentValue] = useState(0)
-  const form = useRef(null)
 
   const [result, commission] = useCalculatePercent(currentValue, sendActive)
 
@@ -45,15 +44,13 @@ function Home() {
             label="Activar Enviar"
           />
         </div>
-        <form onSubmit={null} ref={form} className="mt-5">
-          <NumberField
-            value={currentValue}
-            handleChange={handleChangeValue}
-            label={`${
-              sendActive ? 'Cantidad a Enviar' : 'Cantidad que desea Recibir'
-            } :`}
-          />
-        </form>
+        <NumberField
+          value={currentValue}
+          handleChange={handleChangeValue}
+          label={`${
+            sendActive ? 'Cantidad a Enviar' : 'Cantidad que desea Recibir'
+          } :`}
+        />
         {result !== 0 && (
           <>
             <p className="text-center mt-2 text-sm">
