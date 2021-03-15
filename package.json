@@ -10,8 +10,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "export": "next build && next export && yarn make:ext",
-    "make:ext": "node ./utils/make-ext.js",
+    "export": "rm -rf ./.next && next build && next export",
+    "generate:firefox": "yarn export && node ./utils/make-ext.js firefox",
+    "generate:chrome": "yarn export && node ./utils/make-ext.js chrome",
     "test": "jest"
   },
   "dependencies": {
@@ -27,6 +28,7 @@
     "babel-jest": "^26.6.3",
     "jest": "^26.6.3",
     "postcss": "^8.2.7",
+    "shelljs": "^0.8.4",
     "tailwindcss": "^2.0.3",
     "webpackbar": "^5.0.0-3"
   }
