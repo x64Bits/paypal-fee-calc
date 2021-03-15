@@ -1,8 +1,13 @@
 const fs = require('fs')
+const archiver = require('archiver')
 
-const buildFolder = `${__dirname}/../out/`
+const parentFolder = `${__dirname}/../`
+const buildFolder = `${parentFolder}out/`
+
 const oldFolderName = `${buildFolder}_next`
 const newFolderName = `${buildFolder}next`
+
+const extFileName = 'extension.zip'
 
 function getHtmlFiles(files) {
   return (htmlFiles = files
@@ -12,6 +17,21 @@ function getHtmlFiles(files) {
       }
     })
     .filter((file) => file !== undefined))
+}
+
+function zipDirectory(source, out) {
+  const archive = archiver('zip', { zlib: { level: 9 } })
+  const stream = fs.createWriteStream(out)
+
+  return new Promise((resolve, reject) => {
+    archive
+      .directory(source, false)
+      .on('error', (err) => reject(err))
+      .pipe(stream)
+
+    stream.on('close', () => resolve())
+    archive.finalize()
+  })
 }
 
 fs.readdir(buildFolder, (err, folderFiles) => {
@@ -37,11 +57,13 @@ fs.readdir(buildFolder, (err, folderFiles) => {
   })
 
   console.log('\x1b[32m', `✓ ${htmlFiles.length} Files modified`)
-
-  fs.rename(oldFolderName, newFolderName, () =>
-    console.log(
-      '\x1b[32m',
-      `✓ Folder ${oldFolderName} renamed to ${newFolderName} sucess`
-    )
-  )
 })
+
+zipDirectory(buildFolder, `${process.cwd()}/${extFileName}`)
+
+fs.rename(oldFolderName, newFolderName, () =>
+  console.log(
+    '\x1b[32m',
+    `✓ Folder ${oldFolderName} renamed to ${newFolderName} sucess`
+  )
+)
