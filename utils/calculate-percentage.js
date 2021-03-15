@@ -43,6 +43,10 @@ function toReceive(value) {
 }
 
 export function calculatePercent(currentValue, sendActive) {
+  if (validValue(currentValue) === 0) {
+    return { totalCommission: 0, totalResult: 0 }
+  }
+
   const { totalResult, totalCommission } = sendActive
     ? toReceive(currentValue)
     : toSend(currentValue)
@@ -50,17 +54,25 @@ export function calculatePercent(currentValue, sendActive) {
   return { totalCommission, totalResult }
 }
 
+function validValue(testValue) {
+  if (
+    typeof testValue === 'string' &&
+    !isNaN(testValue) &&
+    testValue !== null &&
+    testValue !== undefined &&
+    testValue !== '' &&
+    testValue.charAt(0) !== 0
+  ) {
+    return testValue
+  }
+  return 0
+}
+
 function useCalculatePercent(value, sendActive) {
   const [result, setResult] = useState(0)
   const [commission, setCommission] = useState(0)
 
   useEffect(() => {
-    if (value.length === 0 || value === '0') {
-      setResult(0)
-      setCommission(0)
-      return
-    }
-
     const { totalCommission, totalResult } = calculatePercent(value, sendActive)
 
     setCommission(totalCommission)
