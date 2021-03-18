@@ -42,12 +42,12 @@ function toReceive(value) {
   return { totalResult: crrResult, totalCommission: crrCommission }
 }
 
-export function calculatePercent(currentValue, sendActive) {
+export function calculatePercent(currentValue, typeActive) {
   if (validValue(currentValue) === 0) {
     return { totalCommission: 0, totalResult: 0 }
   }
 
-  const { totalResult, totalCommission } = sendActive
+  const { totalResult, totalCommission } = typeActive
     ? toReceive(currentValue)
     : toSend(currentValue)
 
@@ -68,16 +68,16 @@ function validValue(testValue) {
   return 0
 }
 
-function useCalculatePercent(value, sendActive) {
+function useCalculatePercent(value, typeActive) {
   const [result, setResult] = useState(0)
   const [commission, setCommission] = useState(0)
 
   useEffect(() => {
-    const { totalCommission, totalResult } = calculatePercent(value, sendActive)
+    const { totalCommission, totalResult } = calculatePercent(value, typeActive)
 
     setCommission(totalCommission)
     setResult(totalResult)
-  }, [value, sendActive])
+  }, [value, typeActive])
 
   return [result, commission]
 }

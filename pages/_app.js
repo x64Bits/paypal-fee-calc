@@ -9,7 +9,7 @@ function MyApp({ Component, pageProps }) {
       {' '}
       <Head>
         <title>Calculadora PayPal de comisiones</title>
-        <link rel="icon" href="/iso.png" />
+        <link rel="icon" href="/favicon.png" />
         <meta name="description" content="PayPal Fee Calculator" />
         <meta name="robots" content="index" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />

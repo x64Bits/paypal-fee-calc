@@ -7,10 +7,10 @@ import Result from '../components/Result'
 import { useCalculatePercent } from '../utils/calculate-percentage'
 
 function Home() {
-  const [sendActive, setSendActive] = useState(false)
+  const [typeActive, setTypeActive] = useState(false)
   const [currentValue, setCurrentValue] = useState(0)
 
-  const [result, commission] = useCalculatePercent(currentValue, sendActive)
+  const [result, commission] = useCalculatePercent(currentValue, typeActive)
 
   function handleChangeValue(e) {
     e && e.preventDefault()
@@ -19,8 +19,8 @@ function Home() {
     setCurrentValue(value)
   }
 
-  function handleToggleSendActive(newValue) {
-    setSendActive(newValue)
+  function handleToggleTypeActive(newValue) {
+    setTypeActive(newValue)
   }
 
   return (
@@ -31,35 +31,34 @@ function Home() {
       </Head>
       <main className="mx-5 my-5 max-w-md main-container">
         <header className="flex flex-row items-center">
-          <img src="/iso.png" alt="App icon" className="h-12 w-12" />
-          <img src="/pp-logo.png" alt="PayPal logo" className="h-7 ml-2" />
+          <img src="/favicon.png" alt="App icon" className="h-12 w-12" />
+          <img src="/paypal-logo.png" alt="PayPal logo" className="h-8 ml-2" />
         </header>
-        <h1 className="text-lg mr-16 mt-3">
+        <h1 className="text-lg mr-16 mt-3 text-primary mb-3">
           Calculadora de comisiones de <b>PayPal</b>
         </h1>
-        <div className="mt-3">
-          <Switch
-            active={sendActive}
-            setActive={handleToggleSendActive}
-            label="Activar Enviar"
-          />
+        <hr className="border-separator" />
+        <div className="mt-3 mb-3">
+          <Switch active={typeActive} setActive={handleToggleTypeActive} />
         </div>
+        <hr className="border-separator" />
         <NumberField
+          typeActive={typeActive}
           value={currentValue === 0 ? '' : currentValue}
           handleChange={handleChangeValue}
           label={`${
-            sendActive ? 'Cantidad a Enviar' : 'Cantidad que desea Recibir'
+            typeActive ? 'Cantidad a Enviar' : 'Cantidad que desea Recibir'
           } :`}
         />
         {result !== 0 && (
           <>
-            <p className="text-center mt-2 text-sm">
-              {sendActive ? 'Cantidad que se recibira' : 'Es necesario enviar'}:
+            <p className="text-center text-secondary mt-2 text-sm">
+              {typeActive ? 'Cantidad que se recibira' : 'Es necesario enviar'}:
             </p>
             <div className="relative">
               <Result value={result} key={currentValue} />
             </div>
-            <p className="text-center mt-3">
+            <p className="text-center text-secondary mt-3">
               Comision de <b>{commission}usd</b>
             </p>
           </>

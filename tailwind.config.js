@@ -4,10 +4,13 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        main: "#0D3883",
-        secondary: "#009CDA",
-        "field-bg": "#F6F6F6",
-        "field-border": "#EDEDED",
+        primary: '#fcfcfd',
+        secondary: '#9f9eba',
+        main: '#0D3883',
+        'field-bg': '#0e0558',
+        'field-border': '#3b6efe',
+        bg: '#090043',
+        separator: '#201b61',
       },
     },
   },
@@ -15,4 +18,4 @@ module.exports = {
     extend: {},
   },
   plugins: [],
-};
+}

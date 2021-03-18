@@ -5,6 +5,7 @@ input {
 body {
   padding: 0;
   margin: 0;
+  @apply bg-bg;
 }
 
 .main-container {
@@ -24,7 +25,11 @@ a {
 
 .result-text {
   font-size: 72px;
-  background: -webkit-linear-gradient(left, #0d3883, #009cda);
+  background: -webkit-linear-gradient(left, #fdfbfb, #ebedee);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+input[type='number'] {
+  font-size: 24px;
 }
