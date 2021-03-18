@@ -4,7 +4,7 @@
     "name": "Ignacio Zsabo",
     "email": "ignacioluisr2006@gmail.com"
   },
-  "version": "0.1.5",
+  "version": "0.1.6",
   "private": true,
   "scripts": {
     "dev": "next dev",
