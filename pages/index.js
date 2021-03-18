@@ -12,11 +12,8 @@ function Home() {
 
   const [result, commission] = useCalculatePercent(currentValue, typeActive)
 
-  function handleChangeValue(e) {
-    e && e.preventDefault()
-    const { value } = e.target
-
-    setCurrentValue(value)
+  function handleChangeValue(newValue) {
+    setCurrentValue(newValue)
   }
 
   function handleToggleTypeActive(newValue) {

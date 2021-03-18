@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import { BiChevronUp, BiChevronDown } from 'react-icons/bi'
 
 export default function NumberField({
   value,
@@ -19,6 +20,40 @@ export default function NumberField({
     }, 250)
   }, [fieldRef])
 
+  function handleSpinUpValue() {
+    const newValue = !!value ? (parseFloat(value) + 1).toFixed(2) : 1
+
+    handleChange(newValue)
+  }
+
+  function handleSpinDownValue() {
+    const mathValue = !!value ? (parseFloat(value) - 1).toFixed(2) : null
+
+    const newValue = mathValue >= 1 ? mathValue : 0
+
+    handleChange(newValue)
+  }
+
+  function handleSetValue(e) {
+    const newValue = e.target.value
+    handleChange(newValue)
+  }
+
+  function SpinButtons() {
+    return (
+      <div className="flex flex-col bg-field-border rounded-md">
+        <BiChevronUp
+          className="text-primary text-lg"
+          onClick={handleSpinUpValue}
+        />
+        <BiChevronDown
+          className="text-primary text-lg"
+          onClick={handleSpinDownValue}
+        />
+      </div>
+    )
+  }
+
   return (
     <div className="mt-4">
       <label>
@@ -31,9 +66,10 @@ export default function NumberField({
             type="number"
             placeholder="0,0"
             className="bg-field-bg text-primary w-full py-2"
-            onChange={handleChange}
+            onChange={handleSetValue}
             value={value}
           />
+          <SpinButtons />
         </div>
       </label>
     </div>
