@@ -5,7 +5,7 @@ input {
 body {
   padding: 0;
   margin: 0;
-  @apply bg-bg;
+  background-color: #090043;
 }
 
 .main-container {
