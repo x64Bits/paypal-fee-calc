@@ -1,6 +1,6 @@
 {
   "name": "PayPal Fee Calculator",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "manifest_version": 2,
 
   "description": "A most simple PayPal Fee calculator",
