@@ -1,6 +1,4 @@
 import Head from 'next/head'
-
-import 'tailwindcss/tailwind.css'
 import '../styles/globals.css'
 
 function MyApp({ Component, pageProps }) {
@@ -16,7 +14,7 @@ function MyApp({ Component, pageProps }) {
         <link
           rel="preload stylesheet"
           href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap"
-        ></link>
+        />
       </Head>{' '}
       <Component {...pageProps} />
     </>
