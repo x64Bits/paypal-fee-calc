@@ -47,3 +47,9 @@ The above command generates a file **extension.zip** in the root of the project 
 ```bash
 yarn make:ext
 ```
+
+## Get it like browser extension:
+
+[![Opera](https://user-images.githubusercontent.com/25030238/115462259-6f86d200-a1f8-11eb-8e28-2cdc8ff4ee35.png)](https://addons.opera.com/es/extensions/details/paypal-fee-calculator/)
+
+[![Firefox](https://user-images.githubusercontent.com/25030238/115462258-6eee3b80-a1f8-11eb-9c77-fe65b3ea18c0.png)](https://addons.mozilla.org/es/firefox/addon/paypal-fee-calculator/)
