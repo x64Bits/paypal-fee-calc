@@ -1,13 +1,5 @@
 import { useTransition, animated } from 'react-spring'
-
-const letsFormat = (value) => {
-  const formatter = Intl.NumberFormat('USD', {
-    style: 'decimal',
-    currency: 'USD',
-  })
-
-  return !!value ? formatter.format(value) : null
-}
+import { formatCurrency } from '../utils/format-currency'
 
 function AnimatedText({ text }) {
   const transitions = useTransition(text, text, {
@@ -20,7 +12,7 @@ function AnimatedText({ text }) {
     return (
       <animated.div key={key} style={props} className="absolute">
         <h2 className="result-text font-extrabold text-6xl text-center mt-1">
-          {letsFormat(item)}
+          {formatCurrency(item)}
         </h2>
       </animated.div>
     )

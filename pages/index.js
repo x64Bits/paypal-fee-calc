@@ -9,6 +9,7 @@ import { useCalculatePercent } from '../utils/calculate-percentage'
 import { Header } from '../components/Header'
 import { useRecoilState } from 'recoil'
 import { percentageState } from '../atoms/percentage'
+import { formatCurrency } from '../utils/format-currency'
 
 function Home() {
   const [typeActive, setTypeActive] = useState(false)
@@ -59,7 +60,7 @@ function Home() {
               <Result value={result} key={currentValue} />
             </div>
             <p className="text-center text-secondary mt-3">
-              Comision de <b>{commission}usd</b>
+              Comisión de <b>USD {formatCurrency(commission)}</b>
             </p>
           </>
         )}
