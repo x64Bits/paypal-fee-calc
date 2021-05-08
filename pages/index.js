@@ -1,10 +1,12 @@
 import Head from 'next/head'
 import { useState } from 'react'
+import { FiSettings } from 'react-icons/fi'
 
 import Switch from '../components/Switch'
 import NumberField from '../components/NumberField'
 import Result from '../components/Result'
 import { useCalculatePercent } from '../utils/calculate-percentage'
+import { Header } from '../components/Header'
 
 function Home() {
   const [typeActive, setTypeActive] = useState(false)
@@ -27,10 +29,7 @@ function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="mx-5 my-5 max-w-md main-container">
-        <header className="flex flex-row items-center">
-          <img src="/favicon.png" alt="App icon" className="h-12 w-12" />
-          <img src="/paypal-logo.png" alt="PayPal logo" className="h-8 ml-2" />
-        </header>
+        <Header actionLink="/settings" Icon={FiSettings} />
         <h1 className="text-lg mr-16 mt-3 text-primary mb-3">
           Calculadora de comisiones de <b>PayPal</b>
         </h1>
