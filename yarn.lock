@@ -4848,6 +4848,11 @@ react-refresh@0.8.3:
   resolved "https://registry.yarnpkg.com/react-refresh/-/react-refresh-0.8.3.tgz#721d4657672d400c5e3c75d063c4a85fb2d5d68f"
   integrity sha512-X8jZHc7nCMjaCqoU+V2I0cOhNW+QMBwSUkeXnTi8IPe6zaRWfn60ZzvFDZqWPfmSJfjub7dDW1SP0jaHWLu/hg==
 
+react-simple-toasts@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/react-simple-toasts/-/react-simple-toasts-1.1.2.tgz#c11e6a14519b898d15036fd8bbdb801e508ea82c"
+  integrity sha512-yCnGOZBnwf4V6lUQ2GnvnN2cxkIBwZx6xgG6LeWTSUJ5x/m87XmmljdeiSJCzaqfBg9Yzr/s3d0XUX2R+08B5g==
+
 react-spring@^8.0.27:
   version "8.0.27"
   resolved "https://registry.yarnpkg.com/react-spring/-/react-spring-8.0.27.tgz#97d4dee677f41e0b2adcb696f3839680a3aa356a"

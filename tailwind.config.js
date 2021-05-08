@@ -11,6 +11,7 @@ module.exports = {
         'field-border': '#3b6efe',
         bg: '#090043',
         separator: '#201b61',
+        copy: 'rgba(255, 255, 255, 0.2)',
       },
     },
   },
