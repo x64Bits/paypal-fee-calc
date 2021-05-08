@@ -14,8 +14,6 @@ function PercentageField() {
     }
   }
 
-  console.log(percentage)
-
   return (
     <div className="flex flex-row justify-between items-center">
       <label htmlFor="percentage-field" className="text-primary text-xl">
