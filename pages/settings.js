@@ -1,13 +1,10 @@
 import Head from 'next/head'
-import { useRouter } from 'next/router'
 import { MdClose } from 'react-icons/md'
 
 import { Header } from '../components/Header'
 import { PercentageField } from '../components/PercentageField'
 
 function Settings() {
-  const router = useRouter()
-
   return (
     <div className="flex flex-col items-center justify-center">
       <Head>

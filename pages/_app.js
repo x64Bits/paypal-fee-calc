@@ -1,9 +1,10 @@
 import Head from 'next/head'
+import { RecoilRoot } from 'recoil'
 import '../styles/globals.css'
 
 function MyApp({ Component, pageProps }) {
   return (
-    <>
+    <RecoilRoot>
       {' '}
       <Head>
         <title>Calculadora PayPal de comisiones</title>
@@ -17,7 +18,7 @@ function MyApp({ Component, pageProps }) {
         />
       </Head>{' '}
       <Component {...pageProps} />
-    </>
+    </RecoilRoot>
   )
 }
 

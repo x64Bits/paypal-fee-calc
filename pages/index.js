@@ -7,12 +7,16 @@ import NumberField from '../components/NumberField'
 import Result from '../components/Result'
 import { useCalculatePercent } from '../utils/calculate-percentage'
 import { Header } from '../components/Header'
+import { useRecoilState } from 'recoil'
+import { percentageState } from '../atoms/percentage'
 
 function Home() {
   const [typeActive, setTypeActive] = useState(false)
   const [currentValue, setCurrentValue] = useState(0)
 
   const [result, commission] = useCalculatePercent(currentValue, typeActive)
+
+  const [percentage] = useRecoilState(percentageState)
 
   function handleChangeValue(newValue) {
     setCurrentValue(newValue)
