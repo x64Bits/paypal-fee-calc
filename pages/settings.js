@@ -3,6 +3,7 @@ import { MdClose } from 'react-icons/md'
 
 import { Header } from '../components/Header'
 import { PercentageField } from '../components/PercentageField'
+import { IS_EXT } from '../utils/constants'
 
 function Settings() {
   return (
@@ -12,7 +13,7 @@ function Settings() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="mx-5 my-5 max-w-md main-container">
-        <Header actionLink="/" Icon={MdClose} />
+        <Header href={`/${IS_EXT ? 'index.html' : ''}`} Icon={MdClose} />
         <h1 className="text-lg mr-16 mt-3 text-primary mb-3">
           <b>Ajustes</b>
         </h1>

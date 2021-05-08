@@ -4,15 +4,15 @@
     "name": "Ignacio Zsabo",
     "email": "ignacioluisr2006@gmail.com"
   },
-  "version": "0.1.6",
+  "version": "0.2.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "export": "rm -rf ./.next && next build && next export",
-    "generate:firefox": "yarn export && node ./utils/make-ext.js firefox",
     "generate:chrome": "yarn export && node ./utils/make-ext.js chrome",
+    "generate:firefox": "yarn export && node ./utils/make-ext.js firefox",
     "generate:opera": "yarn export && node ./utils/make-ext.js opera",
     "test": "jest"
   },

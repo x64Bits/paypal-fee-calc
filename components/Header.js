@@ -1,7 +1,14 @@
 import { FiSettings } from 'react-icons/fi'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 
-function Header({ actionLink, Icon }) {
+function Header({ href, Icon }) {
+  const router = useRouter()
+
+  const handleNavigate = () => {
+    router.push(href)
+  }
+
   return (
     <header className="flex flex-row justify-between">
       <div className="flex flex-row items-center">
@@ -9,11 +16,9 @@ function Header({ actionLink, Icon }) {
         <img src="/paypal-logo.png" alt="PayPal logo" className="h-8 ml-2" />
       </div>
       <div className="flex flex-row items-center cursor-pointer">
-        <Link href={actionLink}>
-          <a>
-            <Icon className="text-3xl text-primary" />
-          </a>
-        </Link>
+        <div onClick={handleNavigate}>
+          <Icon className="text-3xl text-primary" />
+        </div>
       </div>
     </header>
   )

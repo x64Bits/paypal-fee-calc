@@ -1,23 +1,36 @@
 import Head from 'next/head'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { FiSettings } from 'react-icons/fi'
 
 import Switch from '../components/Switch'
 import NumberField from '../components/NumberField'
 import Result from '../components/Result'
-import { useCalculatePercent } from '../utils/calculate-percentage'
+import {
+  defaultPercentage,
+  useCalculatePercent,
+} from '../utils/calculate-percentage'
 import { Header } from '../components/Header'
-import { useRecoilState } from 'recoil'
-import { percentageState } from '../atoms/percentage'
 import { formatCurrency } from '../utils/format-currency'
+import { IS_SERVER, IS_EXT } from '../utils/constants'
 
 function Home() {
   const [typeActive, setTypeActive] = useState(false)
   const [currentValue, setCurrentValue] = useState(0)
+  const [percentage, setPercentage] = useState(defaultPercentage)
+
+  useEffect(() => {
+    if (!IS_SERVER) {
+      const value = localStorage.getItem('percentage')
+
+      if (!!value) {
+        setPercentage(value)
+      } else {
+        localStorage.setItem('percentage', defaultPercentage)
+      }
+    }
+  }, [])
 
   const [result, commission] = useCalculatePercent(currentValue, typeActive)
-
-  const [percentage] = useRecoilState(percentageState)
 
   function handleChangeValue(newValue) {
     setCurrentValue(newValue)
@@ -34,7 +47,7 @@ function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="mx-5 my-5 max-w-md main-container">
-        <Header actionLink="/settings" Icon={FiSettings} />
+        <Header href={`/settings${IS_EXT ? '.html' : ''}`} Icon={FiSettings} />
         <h1 className="text-lg mr-16 mt-3 text-primary mb-3">
           Calculadora de comisiones de <b>PayPal</b>
         </h1>
@@ -60,7 +73,8 @@ function Home() {
               <Result value={result} key={currentValue} />
             </div>
             <p className="text-center text-secondary mt-3">
-              Comisión de <b>USD {formatCurrency(commission)}</b>
+              Comisión de <b>USD {formatCurrency(commission)}</b>{' '}
+              {`(${percentage}% + $0.30)`}
             </p>
           </>
         )}

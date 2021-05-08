@@ -43,12 +43,6 @@ function zipDirectory(source, out) {
   })
 }
 
-// Copy manifest
-
-// fs.createReadStream(`${manifestSrc}${manifestName}`).pipe(
-//   fs.createWriteStream(`${manifestDest}${manifestName}`)
-// )
-
 fs.copyFile(
   `${manifestSrc}${platform}-${manifestName}`,
   `${manifestDest}${manifestName}`,
@@ -91,8 +85,5 @@ fs.readdir(buildFolder, (err, folderFiles) => {
 zipDirectory(buildFolder, `${process.cwd()}/${extFileName}`)
 
 fs.rename(oldFolderName, newFolderName, () =>
-  console.log(
-    '\x1b[32m',
-    `✓ Folder ${oldFolderName} renamed to ${newFolderName} successfully`
-  )
+  console.log('\x1b[32m', `✓ Renamed folders successfully`)
 )

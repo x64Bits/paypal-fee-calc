@@ -1,8 +1,10 @@
 {
   "manifest_version": 3,
   "name": "PayPal Fee Calculator",
-  "version": "0.1.6",
-  "description": "A most simple PayPal Fee calculator",
+  "version": "0.2.0",
+  "description": "A most simple and beautiful PayPal fee calculator",
+
+  "host_permissions": ["https://*.paypal.com/*"],
 
   "action": {
     "default_icon": {

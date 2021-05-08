@@ -1,13 +1,23 @@
 import { useEffect, useState } from 'react'
-import { useRecoilState } from 'recoil'
-import { percentageState } from '../atoms/percentage'
 
 const paypalFee = 0.3
+
+export const defaultPercentage = 5.4
 
 function useCalculatePercent(value, typeActive) {
   const [result, setResult] = useState(0)
   const [commission, setCommission] = useState(0)
-  const [percentage] = useRecoilState(percentageState)
+  const [percentage, setPercentage] = useState(5.4)
+
+  useEffect(() => {
+    const IS_SERVER = typeof window === 'undefined'
+
+    if (!IS_SERVER) {
+      const value = localStorage.getItem('percentage')
+
+      !!value && setPercentage(value)
+    }
+  }, [])
 
   const paypalCommission = Number(percentage)
 
